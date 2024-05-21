@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>A.M.A STORES - Cart</title>
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+      background-color: gray;
+    }
+
+    .container {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+    }
+
+      .p {
+        position: relative;
+        left: 400px;
+        top: -325px;
+        color: #FFFFFF;
+      }
+
+      .h1 {
+        position: relative;
+        left: 400px;
+        top: -50px;
+      }
+
+      .logo {
+        border-radius: 90px;
+        width: 225px;
+        height: 225px;
+        position: relative;
+        top: -100px;
+        left: 100px;
+      }
+
+    .Button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .Button:hover {
+      background-color: #E9D8C7;
+    }
+
+    .main {
+      height: 250px;
+      width: 100%;
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+
+    .fa.fa-shopping-cart {
+      position: relative;
+      left: 825px;
+      top: -375px;
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+    .fa.fa-search {
+      position: relative;
+      left: 875px;
+      top: -375px;
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+    .fas.fa-headset {
+      position: relative;
+      left: 925px;
+      top: -375px;
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+    .far.fa-user-circle {
+      position: relative;
+      left: 975px;
+      top: -375px;
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+    .product-Availability {
+      position: relative;
+      top: -300px;
+      left: 350px;
+    }
+
+    #productInput {
+      position: relative;
+      top: -300px;
+      left: 350px;
+    }
+
+    #productLabel {
+      position: relative;
+      top: -300px;
+      left: 350px;
+    }
+
+    .availabilityButton {
+      position: relative;
+      top: -300px;
+      left: 350px;
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div class="main">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+ data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+ aria-expanded="false" aria-label="Togglenavigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+    <h1 class="h1">A.M.A STORES</h1>
+    <img src="https://i.ibb.co/mhCNWvK/IMG-20240121-WA0090.jpg" alt="IMG-20240121-WA0090" border="2" class="logo"/>
+    <p class="p"><em>"where quality meets convenience"</em></p>
+    <i class="fa fa-shopping-cart" onclick="takeUserTocart()"></i>
+    <i class=" fa fa-search" onclick="takeUserToSearch()"></i>
+    <i class="fas fa-headset"></i>
+    <i class="far fa-user-circle"></i>
+    <h1 class="product-Availability">Product Availability Checker</h1>
+    <label for="productInput" id="productLabel">Enter product name:</label>
+    <input type="text" id="productInput">
+    <button onclick="checkAvailability()" class="availabilityButton">Check</button>
+    <p id="outputMessage"></p>
+  </div>
+  <br>
+  <br>
+
+  <div id="cartItems"></div>
+  <button onClick="goBack()" class="Button">Go Back</button>
+
+  <h1>Checkout Total Price</h1>
+  <button onclick="calculateAndDisplayTotal()" class="Button">Calculate Total Price</button>
+  <p id="total-price"></p>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function removeFromCart(item) {
+      let cartItems= localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+      cartItems = cartItems.filter((cartItem) => cartItem !== item);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      displayCartItems();
+      calculateAndDisplayTotal();
+    }
+
+    function displayCartItems() {
+      const cartItems = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+      const cartItemsContainer = document.getElementById('cartItems');
+
+      if (cartItems.length > 0) {
+        cartItemsContainer.innerHTML = '';
+
+        cartItems.forEach((item) => {
+          const container = document.createElement('div');
+          container.classList.add('container');
+
+          const productName = document.createElement('h2');
+          productName.textContent = item;
+          container.appendChild(productName);
+
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Remove from Cart';
+          removeButton.classList.add('Button');
+          removeButton.addEventListener('click', () => removeFromCart(item));
+          container.appendChild(removeButton);
+
+          cartItemsContainer.appendChild(container);
+        });
+      } else {
+        cartItemsContainer.innerHTML = 'Your cart is empty.';
+      }
+    }
+
+    function calculateAndDisplayTotal() {
+      const cartItems = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+      const totalPrice = cartItems.length * 10; // Assuming each item costs $10
+      const totalPriceElement = document.getElementById('total-price');
+      totalPriceElement.textContent = `Total Price: $${totalPrice}`;
+    }
+
+    displayCartItems();
+    calculateAndDisplayTotal();
+  </script>
+</body>
+
+</html>

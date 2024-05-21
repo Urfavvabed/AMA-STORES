@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Iphones</title>
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+      background-color: gray;
+    }
+     
+    .productContainer {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+    .container {
+      width: 500px;
+      padding: 20px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+        display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    }
+    
+    
+    
+    .rating {
+      display: inline-block;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      float: right;
+      color: #ddd;
+      font-size: 24px;
+    }
+
+    .rating label:before {
+      content: "\2605";
+    }
+
+    .rating input:checked~label {
+      color: #ffcc00;
+    }
+
+    .p {
+       position: relative;
+      left: 400px;
+      top: -325px;
+      color: #FFFFFF;
+}
+     
+       .h1 {
+      position: relative;
+      left: 400px;
+      top: -50px;
+}  
+
+    .logo {
+      border-radius: 90px;
+      width: 225px;
+      height: 225px;
+      position: relative;
+      top: -100px;
+      left: 100px;
+   }
+    .Button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .Button:hover {
+      background-color: #E9D8C7;
+    }
+ 
+ .main {
+     height: 250px;
+     width: 100%;
+     background-color: #000000;
+color: #FFFFFF;
+  }
+ 
+    .fa.fa-shopping-cart {
+     position: relative;
+     left: 825px; 
+     top: -375px;
+     color: #FFFFFF;
+     font-size: 18px;
+}
+
+     .fa.fa-search {
+     position: relative;
+     left: 875px; 
+     top: -375px;
+     color: #FFFFFF;
+     font-size: 18px;
+}
+    .fas.fa-headset {
+     position: relative;
+     left: 925px; 
+     top: -375px;
+     color: #FFFFFF;
+     font-size: 18px;
+}
+    .far.fa-user-circle {
+     position: relative;
+     left: 975px; 
+     top: -375px;
+     color: #FFFFFF;
+     font-size: 18px;
+}
+
+    .product-Availability {
+     position: relative;
+      top: -300px;
+    left: 350px;
+}
+
+    #productInput  {
+     position: relative;
+      top: -300px;
+    left: 350px;
+}
+
+    #productLabel  {
+     position: relative;
+      top: -300px;
+    left: 350px;
+}
+   
+   .availabilityButton  {
+     position: relative;
+      top: -300px;
+    left: 350px;
+}
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+<div class="main">
+<span onclick="toggleMenu()">☰</span>
+  
+
+
+<h1 class="h1">A.M.A STORES</h1>
+  <img src="https://i.ibb.co/mhCNWvK/IMG-20240121-WA0090.jpg" alt="IMG-20240121-WA0090" border="2" class="logo" />
+  <p class="p"><em>"where quality meets convenience"</em></p>
+   
+  <i class="fa fa-shopping-cart"  onclick="takeUserToCart()"></i>
+  <i class=" fa fa-search" onclick="takeUserToSearch()"></i>
+  <i class="fas fa-headset"></i>
+  <i class="far fa-user-circle"></i>
+   <h1 class="product-Availability">Product Availability Checker</h1>
+  <label for="productInput" id="productLabel">Enter product name:</label>
+  <input type="text" id="productInput">
+  <button onclick="checkAvailability()" class="availabilityButton">Check</button>
+  <p id="outputMessage"></p>
+</div>
+</div>
+<br>
+<br>
+    
+  
+<h1>ACCESSORIES SECTION :</h1>
+    <div class="container">
+      <h2>keyboard</h2>
+      <p>Description keyboard</p>
+      <img src="https://i.ibb.co/tHYwmj9/keyboard.jpg" alt="Product Image" style="height: 150px; width: 200px; border-radius: 1px; border: 1px solid #ccc;">
+      <p>Price: <span id="2">$10</span></p>
+      <div class="rating">
+        <input type="radio" id="star1.5" name="rating" value="5">
+        <label for="star1.5"></label>
+        <input type="radio" id="star1.4" name="rating" value="4">
+        <label for="star1.4"></label>
+        <input type="radio" id="star1.3" name="rating" value="3">
+        <label for="star1.3"></label>
+        <input type="radio" id="star1.2" name="rating" value="2">
+        <label for="star1.2"></label>
+        <input type="radio" id="star1.1" name="rating" value="1">
+        <label for="star1.1"></label>
+        <button class="Button" onClick="addToCart('keyboard')">Add To Cart</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>speakers</h2>
+      <p>Description speakers</p>
+      <img src="https://i.ibb.co/1R4mCH0/speaker.jpg" alt="Product Image" style="height: 150px; width: 200px; border-radius: 1px; border: 1px solid #ccc;">
+      <p>Price: <span id="2">$10</span></p>
+      <div class="rating">
+        <input type="radio" id="star2.5" name="rating" value="5">
+        <label for="star2.5"></label>
+        <input type="radio" id="star2.4" name="rating" value="4">
+        <label for="star2.4"></label>
+        <input type="radio" id="star2.3" name="rating" value="3">
+        <label for="star2.3"></label>
+        <input type="radio" id="star2.2" name="rating" value="2">
+        <label for="star2.2"></label>
+        <input type="radio" id="star2.1" name="rating" value="1">
+        <label for="star2.1"></label>
+        <button class="Button" onClick="addToCart('speakers')">Add To Cart</button>
+       </div>
+      </div>
+
+<div class="container">
+      <h2>LED lights</h2>
+      <p>Description LED lights</p>
+      <img src="https://i.ibb.co/GpsVBYf/ledlights.jpg" alt="Product Image" style="height: 150px; width: 200px; border-radius: 1px; border: 1px solid #ccc;">
+      <p>Price: <span id="2">$10</span></p>
+      <div class="rating">
+        <input type="radio" id="star3.5" name="rating" value="5">
+        <label for="star3.5"></label>
+        <input type="radio" id="star3.4" name="rating" value="4">
+        <label for="star3.4"></label>
+        <input type="radio" id="star3.3" name="rating" value="3">
+        <label for="star3.3"></label>
+        <input type="radio" id="star3.2" name="rating" value="2">
+        <label for="star3.2"></label>
+        <input type="radio" id="star3.1" name="rating" value="1">
+        <label for="star3.1"></label>
+        <button class="Button" onClick="addToCart('LED lights')">Add To Cart</button>
+       </div>
+      </div>
+
+<div class="container">
+      <h2>Headphones</h2>
+      <p>Description Headphones</p>
+      <img src="https://i.ibb.co/bPPxv7F/headphone.webp" alt="Product Image" style="height: 150px; width: 200px; border-radius: 1px; border: 1px solid #ccc;">
+      <p>Price: <span id="2">$10</span></p>
+      <div class="rating">
+        <input type="radio" id="star4.5" name="rating" value="5">
+        <label for="star4.5"></label>
+        <input type="radio" id="star4.4" name="rating" value="4">
+        <label for="star4.4"></label>
+        <input type="radio" id="star4.3" name="rating" value="3">
+        <label for="star4.3"></label>
+        <input type="radio" id="star4.2" name="rating" value="2">
+        <label for="star4.2"></label>
+        <input type="radio" id="star4.1" name="rating" value="1">
+        <label for="star4.1"></label>
+        <button class="Button" onClick="addToCart('Headphones')">Add To Cart</button>
+       </div>
+      </div>
+
+   <div class="container">
+      <h2>Gaming Chair</h2>
+      <p>Description Gaming Chair</p>
+      <img src="https://i.ibb.co/MBq7jxS/gamingchair.jpg" alt="Product Image" style="height: 150px; width: 200px; border-radius: 1px; border: 1px solid #ccc;">
+      <p><span id="1">product unavailable</span></p>
+      <div class="rating">
+        <input type="radio" id="star5.5" name="rating" value="5">
+        <label for="star5.5"></label>
+        <input type="radio" id="star5.4" name="rating" value="4">
+        <label for="star5.4"></label>
+        <input type="radio" id="star5.3" name="rating" value="3">
+        <label for="star5.3"></label>
+        <input type="radio" id="star5.2" name="rating" value="2">
+        <label for="star5.2"></label>
+        <input type="radio" id="star5.1" Iphone Xname="rating" value="1">
+        <label for="star5.1"></label>
+        <button class="Button" onclick="unavailable()">Add To Cart</button>
+      </div>
+    </div>
+</div>
+</main>
+
+<script>
+ function showSearchResults() {
+      var searchInput = document.getElementById("searchInput").value.toLowerCase();
+      var searchedResults = document.getElementById("searchedResults");
+      var containers = document.getElementsByClassName("container");
+
+      searchedResults.innerHTML = "";
+
+     
+      for (var i = 0; i < containers.length; i++) {
+        var productName = containers[i].querySelector(".product-name").innerText.toLowerCase();
+
+      
+        if (productName.includes(searchInput)) {
+          // Clone the matching container and append it to the search results
+          var clonedContainer = containers[i].cloneNode(true);
+          searchedResults.appendChild(clonedContainer);
+        }
+      }
+    }
+function unavailable() {
+  alert("Product Unavailable");
+}
+
+function checkAvailability() {
+      var input = document.getElementById("productInput").value;
+      var output = document.getElementById("outputMessage");
+
+      if (input === "Product 1" || input === "Product 2" || input === "Product 3" || input === "Product 3") {
+        output.innerHTML = "Product available";
+      } else {
+        output.innerHTML = "Product not available";
+      }
+    }
+function addToCart(product) {
+  let cartItems = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+  cartItems.push(product);
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  alert('Product added to cart successfully!');
+}
+
+function takeUserToCart() {
+  window.location.href = 'cart1.html';
+}
+
+
+</script>
+
+</body>
+
+</html>
