@@ -143,9 +143,8 @@ body {
   <div id="cartItems"></div>
   <button onClick="goBack()" class="button">Go Back</button>
 
-  <h1>Checkout Total Price</h1>
-  <button onclick="calculateAndDisplayTotal()" class="button">Calculate Total Price</button>
-  <p id="total-price"></p>
+  <h1>Checkout</h1>
+  
   <button onclick="proceedToCheckout()" class="button">Proceed to Checkout</button>
 
   <script>
@@ -189,12 +188,7 @@ body {
       }
     }
 
-    function calculateAndDisplayTotal() {
-      const cartItems = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-      const totalPrice = cartItems.length * 10;
-      const totalPriceElement = document.getElementById('total-price');
-      totalPriceElement.textContent = `Total Price: $${totalPrice}`;
-    }
+   
 
     function proceedToCheckout() {
       const cartItems = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
