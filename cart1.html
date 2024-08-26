@@ -197,9 +197,9 @@ body {
         localStorage.removeItem('cart');
         displayCartItems();
         calculateAndDisplayTotal();
-        alert(`Your total cost is $${totalPrice}. Please contact 123-456-789 to continue your checkout process.`);
+        console.log(`Your total cost is $${totalPrice}. Please contact 123-456-789 to continue your checkout process.`);
       } else {
-        alert('Your cart is empty. Please add items to your cart before proceeding to checkout.');
+        console.log('Your cart is empty. Please add items to your cart before proceeding to checkout.');
       }
     }
 
